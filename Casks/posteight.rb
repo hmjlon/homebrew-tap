@@ -7,7 +7,7 @@ cask "posteight" do
   desc "Private sticky notes for your Mac"
   homepage "https://github.com/hmjlon/posteight"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
   depends_on arch: :arm64
 
   app "Posteight.app"
