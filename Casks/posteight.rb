@@ -4,7 +4,7 @@ cask "posteight" do
 
   url "https://github.com/hmjlon/posteight/releases/download/v#{version}/Posteight-#{version}.dmg"
   name "Posteight"
-  desc "Private sticky notes for your Mac"
+  desc "Floating sticky notes that stay out of screen shares"
   homepage "https://github.com/hmjlon/posteight"
 
   livecheck do
@@ -17,8 +17,11 @@ cask "posteight" do
 
   app "Posteight.app"
 
+  # 앱은 샌드박스라 노트도 설정도 컨테이너 안에 있다. 아래 두 경로는 샌드박스
+  # 이전 설치에만 남아 있는 것이라, 컨테이너가 빠지면 zap 이 아무것도 지우지 못한다.
   zap trash: [
     "~/Library/Application Support/Posteight",
+    "~/Library/Containers/com.younjiyoung.posteight",
     "~/Library/Preferences/com.younjiyoung.posteight.plist",
   ]
 end
