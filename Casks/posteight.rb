@@ -24,4 +24,17 @@ cask "posteight" do
     "~/Library/Containers/com.younjiyoung.posteight",
     "~/Library/Preferences/com.younjiyoung.posteight.plist",
   ]
+
+  # 공증 전까지는 brew 로 깔아도 첫 실행이 막힌다. 앱이 안 열릴 때까지 아무 안내도
+  # 못 받는 일이 없도록, 설치 직후 떼어 내는 방법을 여기서 알려 준다.
+  caveats <<~EOS
+    Posteight is not notarized by Apple yet, so macOS blocks its first launch.
+    Clear the quarantine flag before opening it:
+
+      xattr -dr com.apple.quarantine /Applications/Posteight.app
+
+    This is needed again after every `brew upgrade`: Posteight is signed ad-hoc, so
+    its signature changes with each build and macOS cannot tell the new version is
+    the app you already approved.
+  EOS
 end
